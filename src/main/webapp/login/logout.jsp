@@ -8,7 +8,7 @@
 </head>
 <body>
 <%
-	session.removeAttribute("id");//세션제거
+	session.removeAttribute("id");//세  션제거
 	response.sendRedirect("../index/main.jsp");
 %>
 </body>

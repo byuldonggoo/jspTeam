@@ -1,8 +1,8 @@
 package main;
 
 import java.io.IOException;
-import java.util.List;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -50,9 +50,11 @@ public class UserController extends HttpServlet {
 			
 			UserVO userVO = new UserVO(id, password, nickname, phone_number);
 			userDAO.addMember(userVO);
-			nextPage="/main";
+			nextPage="../index/main.jsp";
 			
 		}
+		RequestDispatcher dispatch = request.getRequestDispatcher(nextPage);
+		dispatch.forward(request, response);
 	}
 	
 	

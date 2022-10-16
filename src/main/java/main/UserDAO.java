@@ -59,14 +59,14 @@ public class UserDAO {
 			String id = u.getId();
 			String password = u.getPwd();
 			String nickname = u.getNickname();
-			String number = u.getPhone_number();
-			String query = "INSERT INTO t_member(id, password, nickname, number)" + " VALUES(?, ? ,? ,?)";
+			String phone_number = u.getPhone_number();
+			String query = "INSERT INTO t_member(id, password, nickname, phone_number)" + " VALUES(?, ? ,? ,?)";
 			System.out.println(query);
 			pstmt = conn.prepareStatement(query);
 			pstmt.setString(1, id);
 			pstmt.setString(2, password);
 			pstmt.setString(3, nickname);
-			pstmt.setString(4, number);
+			pstmt.setString(4, phone_number);
 			pstmt.executeUpdate();
 			pstmt.close();
 			conn.close();
