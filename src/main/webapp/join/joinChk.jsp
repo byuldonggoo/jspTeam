@@ -7,9 +7,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-<%
-	session.removeAttribute("id");//세션제거
-	response.sendRedirect("../index/main.jsp");
-%>
+
 </body>
 </html>

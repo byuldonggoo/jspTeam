@@ -16,21 +16,21 @@
 	request.setCharacterEncoding("utf-8");
 
 	String id = request.getParameter("id");
-	String pwd = request.getParameter("pwd");
+	String password = request.getParameter("password");
 	
 	boolean sw;
 	
 	out.print(id);
-	out.print(pwd);
+	out.print(password);
 	
-	if(id.equals("aaa") && pwd.equals("123")){
+	if(id.equals("aaa") && password.equals("123")){
 		
 	session.setAttribute("id",id);
-	session.setAttribute("pwd",pwd);
+	session.setAttribute("password",password);
 	
 	//세션 유지기간 설정
 	session.setMaxInactiveInterval(60); //1분간 유지.
-	response.sendRedirect("../main/main.jsp?sw=true");
+	response.sendRedirect("../index/main.jsp?sw=true");
 	
 	}else{
 		response.sendRedirect("loginForm.jsp?sw=false");
