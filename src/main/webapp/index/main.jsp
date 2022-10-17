@@ -13,12 +13,12 @@
 
 <c:if test="${id!=null}">
 	<a href="../login/logout.jsp">로그아웃</a>
-	<a href="#">회원가입</a>
+	<a href="../join/joinForm.jsp">회원가입</a>
 </c:if>
 
 <c:if test="${id==null}">
 	<a href="../login/loginForm.jsp">로그인</a>
-	<a href="#">회원가입</a>`
+	<a href="../join/joinForm.jsp">회원가입</a>
 </c:if>
 
 </body>
