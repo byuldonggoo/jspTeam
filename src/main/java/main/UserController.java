@@ -8,6 +8,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 
 @WebServlet("/userController/*")
@@ -52,9 +53,27 @@ public class UserController extends HttpServlet {
 			userDAO.addMember(userVO);
 			nextPage="../index/main.jsp";
 			
+		}else if(action.equals("/login.do")) {
+			String id=request.getParameter("id");
+			String password=request.getParameter("password");
+			
+			int loginResult=userDAO.login(id, password);
+			
+			if(loginResult==1) {
+				request.setAttribute("loginResult", loginResult);
+				HttpSession session = request.getSession();
+				session.setAttribute("sessionID", id);
+				nextPage="../index/main.jsp";
+			}else {
+				request.setAttribute("loginResult", loginResult);
+				nextPage="../login/loginFrom.jsp";
+			}
 		}
+		
+		
 		RequestDispatcher dispatch = request.getRequestDispatcher(nextPage);
 		dispatch.forward(request, response);
+		
 	}
 	
 	
