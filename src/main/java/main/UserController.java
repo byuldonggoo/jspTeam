@@ -57,16 +57,23 @@ public class UserController extends HttpServlet {
 			String id=request.getParameter("id");
 			String password=request.getParameter("password");
 			
+			System.out.println(id);
+			System.out.println(password);
+			
 			int loginResult=userDAO.login(id, password);
+			System.out.println(loginResult);
 			
 			if(loginResult==1) {
 				request.setAttribute("loginResult", loginResult);
 				HttpSession session = request.getSession();
 				session.setAttribute("sessionID", id);
+				session.setMaxInactiveInterval(20*60);
+				
+				System.out.println(session.getAttribute("sessionID"));
 				nextPage="../index/main.jsp";
 			}else {
 				request.setAttribute("loginResult", loginResult);
-				nextPage="../login/loginFrom.jsp";
+				nextPage="../login/loginForm.jsp";
 			}
 		}
 		

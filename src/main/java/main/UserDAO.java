@@ -26,7 +26,7 @@ public class UserDAO {
 		UserVO userInfo = null;
 		try {
 			conn=dataFactory.getConnection();
-			String query="select * from t_member where id=?";
+			String query="select * from userT where id=?";
 			pstmt=conn.prepareStatement(query);
 			pstmt.setString(1, _id);
 			System.out.println(query);
@@ -48,17 +48,17 @@ public class UserDAO {
 	}
 	
 	
-	public int login(String _id, String _password) {
+	public int login(String id, String password) {
 		try {
 		conn = dataFactory.getConnection();
 		String query="select password from user_T where id=?";
 		pstmt=conn.prepareStatement(query);
-		pstmt.setString(1, _id);
+		pstmt.setString(1, id);
 		System.out.println(query);
 		ResultSet rs=pstmt.executeQuery();
 		
 		if(rs.next()) {
-			if(rs.getString("password").equals(_password)) {
+			if(rs.getString("password").equals(password)) {
 				return 1;
 			}else {
 				return 0;
@@ -71,9 +71,9 @@ public class UserDAO {
 		return -1;
 		
 	}
-	//1 ->¾ÆÀÌµð,ºñ¹ø ¸ðµÎ ok
-	//0 ->¾ÆÀÌµð¤·¤· ºñ¹ø ¤¤¤¤ 
-	//-1 ->¾ÆÀÌµðºÎÅÍ ´Ù¸§
+	//1 ->ï¿½ï¿½ï¿½Ìµï¿½,ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ ok
+	//0 ->ï¿½ï¿½ï¿½Ìµð¤·¤ï¿½ ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ 
+	//-1 ->ï¿½ï¿½ï¿½Ìµï¿½ï¿½ï¿½ï¿½ ï¿½Ù¸ï¿½
 	
 	
 	
